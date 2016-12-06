@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+	function nextPage() {
+	var choicenumber = document.getElementsByName("choice1");
+    if (document.form1.choice1[0].checked == true) {
+    //    alert("You have selected Option 1");
+		//var win = 
+		window.open("tits2.html", "_self");
+	    
+		//win.focus();
+		//window.close();
+		
+    }
+    else if (document.form1.choice1[1].checked == true) {
+        alert("You have selected Option 2");
+    }
+//    else if (document.form1.choice1[2].checked == true) {
+//        alert("You have selected Option 3");
+ //   }
+//	else if (document.form1.choice1[3].checked == true) {
+//        alert("You have selected Option 4");
+//    }
+	
+    else {
+        alert("Please select an option before continuing. If you are finished playing, click the Home button");
+        }
+		return true;
+    }
+
+</script>
+<title>Untitled Document</title>
+</head>
+<body>
+<center><img src="logo.png" alt="gamelogohere" width="90%" height="15%" align="middle"></center>
+
+<center><input name="txtf1" type="text" disabled="disabled" 
+
+value="...insert dialogue here..." 
+
+size="20%" maxlength="80%" readonly></center>
+
+<form action="" method="post" name="form1" >
+
+<ol><input name="choice1text" type="text" disabled="disabled" value="...your action 1..." size="20%" maxlength="80%" readonly>
+
+<input name="choice1" type="radio" value="1"></ol>
+
+<ol><input name="choice2text" type="text" disabled="disabled" value="...your action 2..." size="20%" maxlength="80%" readonly>
+
+<input name="choice1" type="radio" value="2"></ol>
+
+<!--<ol><input name="choice3text" type="text" disabled="disabled" value="...your action 3..." size="20%" maxlength="80%" readonly> 
+
+<input name="choice1" type="radio" value="3"></ol>
+
+<ol><input name="choice4text" type="text" disabled="disabled" value="...your action 4..." size="20%" maxlength="80%" readonly>
+
+<input name="choice1" type="radio" value="4"></ol> -->
+
+<input onClick="nextPage() ;" name="selectchoice" type="submit" value="Proceeeeed">
+
+<input  type="button" onclick="location.href='home.html';" value="Home" />
+
+</form>
+</body>
+
+</html>
+

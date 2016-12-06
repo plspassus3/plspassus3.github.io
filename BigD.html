@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+ <link href="new 1.css" type="text/css" rel="stylesheet">
+<script>
+
+function windowClose() { 
+if (window.confirm('Two soldiers dismount and haul you to your feet, put you on the horse and tie you to the saddle.')) 
+{
+window.open('','_parent',''); 
+window.close();
+};
+}
+function moo() {
+ if (window.confirm('You push yourself to your feet and approach the horse cautiously. One soldier dismounts to help you onto your horse')) 
+{
+window.location.href='blah.html';
+};
+}
+
+</script>
+<title>Untitled Document</title>
+</head>
+<body>
+<center><img src="logo.png" alt="gamelogohere" width="90%" height="15%" align="middle"></center>
+<center><p>
+You wake up in a grassy meadow to the sound of hoofs pounding into the ground, coming closer. Sitting up you look around and see a group of men riding horses towards you. Covered in chain mail and tunics they encircle you, their eyes full of curiosity. The leader, who stood out among the others with his gleaming armor and cloak that billowed out behind him, moved closer.“Stranger, you are to come with us.” As another man brought a horse without a rider forward.“Why?” The leader glared down at us.“Come with us. The penalty is death if you do not.”  
+                    Do you go with them:</p></center>
+
+
+<center>
+<form>
+
+<input type="button" onclick="moo();" value="YES" />
+<input type="button" value="NO" onclick="windowClose();">
+
+
+
+<input  type="button" onclick="location.href='home.html';" value="Home" />
+</form></center>
+</body>
+
+</html>
