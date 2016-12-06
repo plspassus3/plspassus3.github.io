@@ -3,10 +3,8 @@
 <head>
 <meta charset="utf-8">
 
-<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
-<script>
-setTimeout(responsiveVoice.speak("Welcome to the Responsive Voice website"),15000);
-</script>
+
+
 <script>
 
 
@@ -40,6 +38,7 @@ window.location.href='BigD.html';
 };
 }
 </script>
+<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
 <title>Untitled Document</title>
 <link href="new 1.css" type="text/css" rel="stylesheet">
 </head>
@@ -64,7 +63,27 @@ window.location.href='BigD.html';
 
 <input  type="button" onclick="location.href='home.html';" value="Home" />
 </form></center>
-</body>
 
+<script> 
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") { // for Internet Explorer 8 and below
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+$(document).ready(function (){ // when the document has completed loading
+   $(document).mouseup(function (e){ // attach the mouseup event for the document
+    responsiveVoice.cancel(); // stop anything currently being spoken
+    responsiveVoice.speak(getSelectionText()); //speak the text as returned by getSelectionText
+   })
+});
+</script>
+</body>
+<script>
+setTimeout(responsiveVoice.speak("Welcome to the Responsive Voice website"),15000);
+</script>
 <script src='//vws.responsivevoice.com/v/e?key=sXvnOrQL'></script>
 </html>
