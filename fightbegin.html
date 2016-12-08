@@ -20,13 +20,24 @@ function nextPage() {
 	var choicenumber = document.getElementsByName("choice1");
     if (document.form1.choice1[0].checked == true) {
     //    alert("You have selected Option 1");
-	var win = window.open("tits3.html", "_blank");
+		//var win = 
+		window.open("ded.html", "_self");
 	    
-	win.focus();
-	window.close();
+		//win.focus();
+		//window.close();
 		
     }
-}
+    else if (document.form1.choice1[1].checked == true) {
+        window.open("ded.html", "_self");
+    }
+    else if (document.form1.choice1[2].checked == true) {
+        window.open("survive.html", "_self");
+
+    else {
+        alert("Please select an option before continuing. If you are finished playing, click the Home button");
+        }
+		return true;
+    }
 
 function windowClose() { 
 

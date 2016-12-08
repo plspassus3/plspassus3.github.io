@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script>
+
+function windowClose() { 
+if (window.confirm('you never cross street and start the adventure good bye my friend reload and hit NO')) 
+{
+window.open('','_parent',''); 
+window.close();
+};
+}
+function moo() {
+ if (window.confirm('Unsure of what you want, you step into the street anyways and are hit by a car speeding down the street. You go flying backwards and land on the sidewalk, unconscious.')) 
+{
+window.location.href='BigD.html';
+};
+}
+</script>
+
+<title>Untitled Document</title>
+<link href="new 1.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+
+<center><img src="logo.png" alt="gamelogohere" width="90%" height="15%" align="middle"></center>
+<center><p>You ded: </p></center>
+
+
+<center>
+
+<input onclick='responsiveVoice.speak("You ded:", "US English Male");' type='button' value='🔊 Play' />
+<form>
+
+<input type="button" onclick="moo();" value="YES" />
+<input type="button" value="NO" onclick="windowClose();">
+
+
+
+<input  type="button" onclick="location.href='index.html';" value="Home" />
+</form></center>
+
+
+</body>
+
+</html>
