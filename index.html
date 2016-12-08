@@ -1,126 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html>
 <head>
+<meta charset="utf-8">
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+function windowClose() { 
+if (window.confirm('you never cross street and start the adventure good bye my friend reload and hit NO')) 
+{
+window.open('','_parent',''); 
+window.close();
+};
+}
+function moo() {
+ if (window.confirm('Unsure of what you want, you step into the street anyways and are hit by a car speeding down the street. You go flying backwards and land on the sidewalk, unconscious.')) 
+{
+window.location.href='BigD.html';
+};
+}
+</script>
 
-    <title>Scrolling Nav - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/scrolling-nav.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+<title>Untitled Document</title>
+<link href="new 1.css" type="text/css" rel="stylesheet">
 </head>
 
-<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+<body>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
 
-    <!-- Intro Section -->
-    <section id="intro" class="intro-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Scrolling Nav</h1>
-                    <p><strong>Usage Instructions:</strong> Make sure to include the <code>scrolling-nav.js</code>, <code>jquery.easing.min.js</code>, and <code>scrolling-nav.css</code> files. To make a link smooth scroll to another section on the page, give the link the <code>.page-scroll</code> class and set the link target to a corresponding ID on the page.</p>
-                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<center><img src="logo.png" alt="gamelogohere" width="90%" height="15%" align="middle"></center>
+<center><p>Narrator: One stormy summer night, as you sit and watch TV, the urge to have some snacks comes upon you. The storm has temporarily let up but you decide to drive anyways, only to discover that your car won’t start. With a slight grimace you pull your hood over your head and start the short walk over to the store. The storm clouds break open again right across the street from it and you huddle inside your jacket. You reach the crosswalk in front of the parking lot.
+                     Do you cross the street: </p></center>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>About Section</h1>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Services Section</h1>
-                </div>
-            </div>
-        </div>
-    </section>
+<center>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Contact Section</h1>
-                </div>
-            </div>
-        </div>
-    </section>
+<input onclick='responsiveVoice.speak("One stormy summer night, as you sit and watch TV, the urge to have some snacks comes upon you. The storm has temporarily let up but you decide to drive anyways, only to discover that your car won’t start. With a slight grimace you pull your hood over your head and start the short walk over to the store. The storm clouds break open again right across the street from it and you huddle inside your jacket. You reach the crosswalk in front of the parking lot. Do you cross the street:", "US English Male");' type='button' value='🔊 Play' />
+<form>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<input type="button" onclick="moo();" value="YES" />
+<input type="button" value="NO" onclick="windowClose();">
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
-    <!-- Scrolling Nav JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/scrolling-nav.js"></script>
+
+<input  type="button" onclick="location.href='index.html';" value="Home" />
+</form></center>
+
 
 </body>
 
