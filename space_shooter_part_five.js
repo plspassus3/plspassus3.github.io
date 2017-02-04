@@ -567,10 +567,9 @@ function Ship() {
 				if (this.y >= this.canvasHeight - this.height)
 					this.y = this.canvasHeight - this.height;
 			} else if (KEY_STATUS.rightdown) {
-				this.y += this.speed 
-				this.x += this.speed
-				if (this.y >= this.canvasHeight - this.height|| this.x >= this.canvasWidth - this.width)
-					this.y = this.canvasHeight - this.height					
+				this.y += this.speed ||	this.x += this.speed
+				if (this.y >= this.canvasHeight - this.height || this.x >= this.canvasWidth - this.width)
+					this.y = this.canvasHeight - this.height,					
 					this.x = this.canvasWidth - this.width;
 			}
 		}
