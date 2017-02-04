@@ -620,7 +620,7 @@ function Enemy() {
 		this.alive = true||false;
 		this.leftEdge = this.x - 90;
 		this.rightEdge = this.x + 690;
-		this.bottomEdge = this.y + 500;
+		this.bottomEdge = this.y + 350;
 	};
 
 	/*
