@@ -740,7 +740,7 @@ function Game() {
 			               imageRepository.spaceship.width, imageRepository.spaceship.height);
 
 			// Initialize the enemy pool object
-			this.enemyPool = new Pool(30);
+			this.enemyPool = new Pool(50);
 			this.enemyPool.init("enemy");
 			this.spawnWave();
 
