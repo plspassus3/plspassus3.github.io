@@ -585,13 +585,13 @@ function Ship() {
 	};
 
 	/*
-	 * Fires two bullets
+	 * Fires 4 bullets
 	 */
 	this.fire = function() {
 		this.bulletPool.getTwo(this.x+6, this.y, 3,
-		                       this.x+33, this.y, 6,
+		                       this.x+11, this.y, 3,
 							   this.x+22, this.y, 3,
-							   this.x+11, this.y, 6);
+							   this.x+33, this.y, 3);
 		game.laser.get();
 	};
 }
