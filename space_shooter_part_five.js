@@ -542,7 +542,7 @@ function Ship() {
 		counter++;
 		// Determine if the action is move action
 		if (KEY_STATUS.left || KEY_STATUS.right ||
-				KEY_STATUS.down || KEY_STATUS.up || KEY_STATUS.rightdown) {
+				KEY_STATUS.down || KEY_STATUS.up) {
 			// The ship moved, so erase it's current image so it can
 			// be redrawn in it's new location
 			this.context.clearRect(this.x, this.y, this.width, this.height);
@@ -566,12 +566,7 @@ function Ship() {
 				this.y += this.speed
 				if (this.y >= this.canvasHeight - this.height)
 					this.y = this.canvasHeight - this.height;
-			} else if (KEY_STATUS.rightdown) {
-				this.y += this.speed ||	this.x += this.speed
-				if (this.y >= this.canvasHeight - this.height || this.x >= this.canvasWidth - this.width)
-					this.y = this.canvasHeight - this.height,					
-					this.x = this.canvasWidth - this.width;
-			}
+			} 
 		}
 
 		// Redraw the ship
@@ -960,7 +955,7 @@ KEY_CODES = {
   38: 'up',
   39: 'right',
   40: 'down',
-  41: 'rightdown',
+  
 }
 
 // Creates the array to hold the KEY_CODES and sets all their values
