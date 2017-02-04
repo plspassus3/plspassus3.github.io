@@ -486,8 +486,8 @@ function Pool(maxSize) {
 		if(!pool[size - 1].alive && !pool[size - 2].alive) {
 			this.get(x1, y1, speed1);
 			this.get(x2, y2, speed2);
-			this.get(x3, y3, speed2);
-			this.get(x4, y4, speed2);
+			this.get(x3, y3, speed3);
+			this.get(x4, y4, speed4);
 		}
 	};
 
@@ -588,9 +588,9 @@ function Ship() {
 	 * Fires 4 bullets
 	 */
 	this.fire = function() {
-		this.bulletPool.getTwo(this.x+6, this.y, 3,
-		                       this.x+11, this.y, 3,
-							   this.x+22, this.y, 3,
+		this.bulletPool.getTwo(this.x+2, this.y, 3,
+		                       this.x+11, this.y, 10,
+							   this.x+22, this.y, 10,
 							   this.x+33, this.y, 3);
 		game.laser.get();
 	};
