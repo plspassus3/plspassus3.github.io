@@ -482,10 +482,12 @@ function Pool(maxSize) {
 	 * only the get() function is used twice, the ship is able to
 	 * fire and only have 1 bullet spawn instead of 2.
 	 */
-	this.getTwo = function(x1, y1, speed1, x2, y2, speed2) {
+	this.getTwo = function(x1, y1, speed1, x2, y2, speed2, x3, y3, speed3, x4, y4, speed4) {
 		if(!pool[size - 1].alive && !pool[size - 2].alive) {
 			this.get(x1, y1, speed1);
 			this.get(x2, y2, speed2);
+			this.get(x3, y3, speed2);
+			this.get(x4, y4, speed2);
 		}
 	};
 
@@ -587,7 +589,9 @@ function Ship() {
 	 */
 	this.fire = function() {
 		this.bulletPool.getTwo(this.x+6, this.y, 3,
-		                       this.x+33, this.y, 3);
+		                       this.x+33, this.y, 6,
+							   this.x+22, this.y, 3,
+							   this.x+11, this.y, 6);
 		game.laser.get();
 	};
 }
