@@ -1,53 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-<script>
-
-function windowClose() { 
-if (window.confirm('you never cross street and start the adventure good bye my friend reload and hit NO')) 
-{
-window.open('','_parent',''); 
-window.close();
-};
-}
-function moo() {
- if (window.confirm('Unsure of what you want, you step into the street anyways and are hit by a car speeding down the street. You go flying backwards and land on the sidewalk, unconscious.')) 
-{
-window.location.href='BigD.html';
-};
-}
-</script>
-
-<title>Untitled Document</title>
-<link href="new 1.css" type="text/css" rel="stylesheet">
-</head>
-
-<body>
-
-
-
-
-<center><img src="logo.png" alt="gamelogohere" width="90%" height="15%" align="middle"></center>
-<center><p>Narrator: One stormy summer night, as you sit and watch TV, the urge to have some snacks comes upon you. The storm has temporarily let up but you decide to drive anyways, only to discover that your car won’t start. With a slight grimace you pull your hood over your head and start the short walk over to the store. The storm clouds break open again right across the street from it and you huddle inside your jacket. You reach the crosswalk in front of the parking lot.
-                     Do you cross the street: </p></center>
-
-
-<center>
-
-<input onclick='responsiveVoice.speak("One stormy summer night, as you sit and watch TV, the urge to have some snacks comes upon you. The storm has temporarily let up but you decide to drive anyways, only to discover that your car won’t start. With a slight grimace you pull your hood over your head and start the short walk over to the store. The storm clouds break open again right across the street from it and you huddle inside your jacket. You reach the crosswalk in front of the parking lot. Do you cross the street:", "US English Male");' type='button' value='🔊 Play' />
-<form>
-
-<input type="button" onclick="moo();" value="YES" />
-<input type="button" value="NO" onclick="windowClose();">
-
-
-
-<input  type="button" onclick="location.href='index.html';" value="Home" />
-</form></center>
-
-
-</body>
-
+	<head>
+		<title>Space Shooter Demo</title>
+		<style>
+			canvas {
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background: transparent;
+			}
+			#background {
+				z-index: -2;
+			}
+			#main {
+				z-index: -1;
+			}
+			#ship {
+				z-index: 0;
+			}
+			.score {
+				position: absolute;
+				top: 5px;
+				left: 480px;
+				color: #FF7F00;
+				font-family: Helvetica, sans-serif;
+				cursor: default;
+			}
+			.game-over {
+				position: absolute;
+				top: 200px;
+				left: 510px;
+				color: #FFFFFF;
+				font-family: Helvetica, sans-serif;
+				font-size: 30px;
+				cursor: default;
+				display: none;
+			}
+			.game-over span {
+				font-size: 20px;
+				cursor: pointer;
+				position: relative;
+				left: 50px;
+			}
+			.game-over span:hover {
+				color: #FFD700;
+			}
+			.loading {
+				position: absolute;
+				top: 100px;
+				left: 210px;
+				color: #FF7F00;
+				font-family: Helvetica, sans-serif;
+				font-size: 30px;
+				cursor: default;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- The canvas for the panning background -->
+		<canvas id="background" width="1200" height="720">
+			Your browser does not support canvas. Please try again with a different browser.
+		</canvas>
+		<!-- The canvas for all enemy ships and bullets -->
+		<canvas id="main" width="1200" height="720">
+		</canvas>
+		<!-- The canvas the ship uses (can only move up
+         one forth the screen. -->
+		<canvas id="ship" width="1200" height="720">
+		</canvas>
+		<div class="score">SCORE: <span id="score"></span></div>
+		<div class="game-over" id="game-over">GAME OVER<p><span onclick="game.restart()">Restart</span></p></div>
+		<div class="loading" id="loading">LOADING...<p>Please wait</p></div>
+		<script src="space_shooter_part_five.js"></script>
+	</body>
 </html>
