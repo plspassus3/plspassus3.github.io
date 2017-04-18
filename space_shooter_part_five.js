@@ -114,7 +114,7 @@ function Drawable() {
  * canvas and creates the illusion of moving by panning the image.
  */
 function Background() {
-	this.speed = 1; // Redefine speed of the background for panning
+	this.speed = 1.25; // Redefine speed of the background for panning
 
 	// Implement abstract function
 	this.draw = function() {
@@ -148,7 +148,7 @@ function Bullet(object) {
 	this.spawn = function(x, y, speed) {
 		this.x = x;
 		this.y = y;
-		this.speed = speed;
+		this.speed = speed*3;
 		this.alive = true;
 	};
 
@@ -189,7 +189,7 @@ function Bullet(object) {
 	this.clear = function() {
 		this.x = 0;
 		this.y = 0;
-		this.speed = 0;
+		this.speed = 12;
 		this.alive = false;
 		this.isColliding = false;
 	};
@@ -208,7 +208,7 @@ Bullet.prototype = new Drawable();
  *     |
  */
 function QuadTree(boundBox, lvl) {
-	var maxObjects = 10;
+	var maxObjects = 1000;
 	this.bounds = boundBox || {
 		x: 0,
 		y: 0,
@@ -218,7 +218,7 @@ function QuadTree(boundBox, lvl) {
 	var objects = [];
 	this.nodes = [];
 	var level = lvl || 0;
-	var maxLevels = 5;
+	var maxLevels = 1000;
 
 	/*
 	 * Clears the quadTree and all nodes of objects
@@ -442,6 +442,7 @@ function Pool(maxSize) {
 				bullet.init(0,0, imageRepository.bullet.width,
 										imageRepository.bullet.height);
 				bullet.collidableWith = "enemy";
+				bullet.collidableWith = "enemyBullet";
 				bullet.type = "bullet";
 				pool[i] = bullet;
 			}
@@ -460,6 +461,7 @@ function Pool(maxSize) {
 				bullet.init(0,0, imageRepository.enemyBullet.width,
 										imageRepository.enemyBullet.height);
 				bullet.collidableWith = "ship";
+				bullet.collidableWith = "enemies"				
 				bullet.type = "enemyBullet";
 				pool[i] = bullet;
 			}
@@ -482,12 +484,11 @@ function Pool(maxSize) {
 	 * only the get() function is used twice, the ship is able to
 	 * fire and only have 1 bullet spawn instead of 2.
 	 */
-	this.getTwo = function(x1, y1, speed1, x2, y2, speed2, x3, y3, speed3, x4, y4, speed4) {
+	this.getTwo = function(x1, y1, speed1, x2, y2, speed2, x3, y3, speed3) {
 		if(!pool[size - 1].alive && !pool[size - 2].alive) {
 			this.get(x1, y1, speed1);
 			this.get(x2, y2, speed2);
-			this.get(x3, y3, speed3);
-			this.get(x4, y4, speed4);
+			this.get(x3, y3 , speed3);
 		}
 	};
 
@@ -520,7 +521,7 @@ function Ship() {
 	this.speed = 10;
 	this.bulletPool = new Pool(30);
 	var fireRate = 10;
-	var counter = 0;
+	var counter = 1;
 	this.collidableWith = "enemyBullet";
 	this.type = "ship";
 
@@ -552,8 +553,9 @@ function Ship() {
 			// to have diagonal movement.
 			if (KEY_STATUS.left) {
 				this.x -= this.speed
-				if (this.x <= 0) // Kep player within the screen
-					this.x = 0;
+				if (this.x <= 0|| this.x == -1 ) // Kep player within the screen
+					this.x =  0;
+					
 			} else if (KEY_STATUS.right) {
 				this.x += this.speed
 				if (this.x >= this.canvasWidth - this.width)
@@ -566,7 +568,7 @@ function Ship() {
 				this.y += this.speed
 				if (this.y >= this.canvasHeight - this.height)
 					this.y = this.canvasHeight - this.height;
-			} 
+			}
 		}
 
 		// Redraw the ship
@@ -580,18 +582,17 @@ function Ship() {
 
 		if (KEY_STATUS.space && counter >= fireRate && !this.isColliding) {
 			this.fire();
-			counter = 0;
+			counter = 1;
 		}
 	};
 
 	/*
-	 * Fires 4 bullets
+	 * Fires two bullets
 	 */
 	this.fire = function() {
-		this.bulletPool.getTwo(this.x+2, this.y, 3,
-		                       this.x+11, this.y, 10,
-							   this.x+22, this.y, 10,
-							   this.x+33, this.y, 3);
+		this.bulletPool.getTwo(this.x+6, this.y, 5,
+		                       this.x+45, this.y, 5,
+							   this.x+27, this.y, 5);
 		game.laser.get();
 	};
 }
@@ -619,8 +620,8 @@ function Enemy() {
 		this.speedY = speed;
 		this.alive = true||false;
 		this.leftEdge = this.x - 90;
-		this.rightEdge = this.x + 690;
-		this.bottomEdge = this.y + 350;
+		this.rightEdge = this.x + 670;
+		this.bottomEdge = this.y + 300;
 	};
 
 	/*
@@ -637,7 +638,7 @@ function Enemy() {
 			this.speedX = -this.speed;
 		}
 		else if (this.y >= this.bottomEdge) {
-			this.speed = 1.5;
+			this.speed = 5;
 			this.speedY = 0;
 			this.y -= 5;
 			this.speedX = -this.speed;
@@ -648,7 +649,7 @@ function Enemy() {
 
 			// Enemy has a chance to shoot every movement
 			chance = Math.floor(Math.random()*10);
-			if (chance/100 < percentFire) {
+			if (chance/100 > percentFire) {
 				this.fire();
 			}
 
@@ -740,7 +741,7 @@ function Game() {
 			               imageRepository.spaceship.width, imageRepository.spaceship.height);
 
 			// Initialize the enemy pool object
-			this.enemyPool = new Pool(50);
+			this.enemyPool = new Pool(24);
 			this.enemyPool.init("enemy");
 			this.spawnWave();
 
@@ -780,10 +781,10 @@ function Game() {
 		var x = 100;
 		var y = -height;
 		var spacer = y * 1.5;
-		for (var i = 1; i <= 36; i++) {
+		for (var i = 1; i <= 24; i++) {
 			this.enemyPool.get(x,y,2);
-			x += width + 25;
-			if (i % 6 == 0) {
+			x += width + 15;
+			if (i % 8 == 0) {
 				x = 100;
 				y += spacer
 			}
@@ -862,7 +863,7 @@ function SoundPool(maxSize) {
 			for (var i = 0; i < size; i++) {
 				// Initalize the object
 				laser = new Audio("sounds/laser.wav");
-				laser.volume = .12;
+				laser.volume = .25;
 				laser.load();
 				pool[i] = laser;
 			}
@@ -870,7 +871,7 @@ function SoundPool(maxSize) {
 		else if (object == "explosion") {
 			for (var i = 0; i < size; i++) {
 				var explosion = new Audio("sounds/explosion.wav");
-				explosion.volume = .1;
+				explosion.volume = 1;
 				explosion.load();
 				pool[i] = explosion;
 			}
@@ -950,6 +951,7 @@ function detectCollision() {
 // The keycodes that will be mapped when a user presses a button.
 // Original code by Doug McInnes
 KEY_CODES = {
+  
   32: 'space',
   37: 'left',
   38: 'up',
